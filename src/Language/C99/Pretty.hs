@@ -689,7 +689,8 @@ instance Pretty ExtDecln where
 
 {- 6.9.1 -}
 instance Pretty FunDef where
-  pretty (FunDef ds d mdl (Compound Nothing)) = fheader ds d mdl <> semi
+  pretty (FunDef ds d mdl (Compound Nothing)) =
+    vcat [ fheader ds d mdl <+> lbrace <+> rbrace ]
   pretty (FunDef ds d mdl cs) =
     vcat [ fheader ds d mdl <+> lbrace
          , nest 2 $ pretty cs
@@ -703,3 +704,10 @@ instance Pretty DeclnList where
 
 fheader :: DeclnSpecs -> Declr -> Maybe DeclnList -> Doc
 fheader ds d mdl = pretty ds <+> pretty d <+> pretty mdl
+
+instance Pretty Group where
+
+instance Pretty GroupPart where
+
+instance Pretty ControlLine where
+
